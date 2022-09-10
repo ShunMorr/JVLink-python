@@ -2,7 +2,7 @@
 共通構造体・メソッド
 """
 
-ENCODE = "shift-jis"
+ENCODE = "cp932"
 
 
 def midb2s(buf: bytes, st: int, length: int):
@@ -72,6 +72,18 @@ class RaceID:
         self.racing_times = midb2s(buf, 11, 2)
         self.racing_days = midb2s(buf, 13, 2)
         self.race_number = midb2s(buf, 15, 2)
+
+    def get_id(self):
+        id_str = self.year + self.month_day + self.place_code + self.race_number
+        return int(id_str)
+
+    def __eq__(self, other):
+        if not isinstance(other, RaceID):
+            return False
+        return self.get_id() == other.get_id()
+
+    def __hash__(self):
+        return hash(self.get_id())
 
 
 class RaceID2:

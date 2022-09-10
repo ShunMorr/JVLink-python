@@ -51,7 +51,6 @@ class IFHorseInfo:
         self.ranked_times_race_type = [ArrivalFrequency3(midb2b(buf, 1111 + 18 * i, 18)) for i in range(7)]
         self.ranked_times_condition = [ArrivalFrequency3(midb2b(buf, 1237 + 18 * i, 18)) for i in range(12)]
         self.ranked_times_distance = [ArrivalFrequency3(midb2b(buf, 1453 + 18 * i, 18)) for i in range(6)]
-        self.style = [midb2s(buf, 1561, 3 * i, 3) for i in range(4)]
-        self.race_count = midb2s(buf, 1573.3)
+        self.style = [midb2s(buf, 1561 + 3 * i, 3) for i in range(4)]
+        self.race_count = midb2s(buf, 1573, 3)
         self.crlf = midb2s(buf, 1576, 2)
-       

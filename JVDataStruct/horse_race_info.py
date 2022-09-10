@@ -16,7 +16,7 @@ class IFHorseRaceInfo:
     def __init__(self, buf_str: str):
         buf = buf_str.encode(ENCODE)
         self.header = RecordID(midb2b(buf, 1, 11))
-        self.race_id = RaceID(midb2b(buf, 12, 16))
+        self.id = RaceID(midb2b(buf, 12, 16))
         self.gate_number = midb2s(buf, 28, 1)
         self.horse_number = midb2s(buf, 29, 2)
         self.sire_id = midb2s(buf, 31, 10)
